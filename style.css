@@ -1,0 +1,39 @@
+.cal-sans-regular {
+  font-family: "Cal Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+body{
+  font-family: "Cal Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    
+}
+header{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+nav{
+    margin: 0;
+    padding: 10px;
+    background-color: #2a2100;
+    color: white;
+}
+
+#logo {
+    height: 40px;
+    vertical-align: middle;
+}
+
+#navgrid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 15px;
+}
