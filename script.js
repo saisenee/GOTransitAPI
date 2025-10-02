@@ -1,20 +1,24 @@
-const apiURL = 'https://corsproxy.io/?url=https://api.openmetrolinx.com/OpenDataAPI/api/V1/Gtfs/Feed/VehiclePosition';
-const apiKey = '30025820';
-
-fetch(apiURL, {
-  headers: {
-    'x-api-key': apiKey
-  }
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.json();
-  })
+fetch('/api/vehicles')
+  .then(res => res.json())
   .then(data => {
-    console.log(data);
+    document.getElementById('loading').style.display = 'none';
+    const departuresDiv = document.getElementById('departures');
+    if (!data || !data.entity || data.entity.length === 0) {
+      departuresDiv.innerHTML = '<p>No departures found.</p>';
+      return;
+    }
+    const list = document.createElement('ul');
+    data.entity.forEach(vehicle => {
+      const trip = vehicle.vehicle?.trip?.tripId || 'Unknown Trip';
+      const route = vehicle.vehicle?.trip?.routeId || 'Unknown Route';
+      const status = vehicle.vehicle?.currentStatus || 'Unknown Status';
+      const li = document.createElement('li');
+      li.textContent = `Trip: ${trip}, Route: ${route}, Status: ${status}`;
+      list.appendChild(li);
+    });
+    departuresDiv.appendChild(list);
   })
-  .catch(error => {
-    console.error('Error fetching Metrolinx API:', error);
+  .catch(err => {
+    document.getElementById('loading').textContent = 'Error loading departures.';
+    console.error('Error fetching vehicle data:', err);
   });

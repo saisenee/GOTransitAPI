@@ -1,12 +1,22 @@
-.cal-sans-regular {
-  font-family: "Cal Sans", sans-serif;
-  font-weight: 400;
+
+.reddit-sans-departures {
+  font-family: "Reddit Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 750;
   font-style: normal;
 }
 
+.reddit-sans-body {
+  font-family: "Reddit Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+    margin: 10px;
+    padding: 0;
+}
 
 body{
-  font-family: "Cal Sans", sans-serif;
+  font-family: "Reddit Sans", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -27,7 +37,8 @@ nav{
 }
 
 #logo {
-    height: 40px;
+    height: 20px;
+    padding-left: 10px;
     vertical-align: middle;
 }
 
